@@ -1,2 +1,1 @@
-# steady_paywall
-Steady Paywall
+# Steady Paywall
