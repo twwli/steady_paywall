@@ -51,11 +51,26 @@ function insert_paywall_tag_based_on_settings($content) {
 
     $paragraphs = explode('</p>', $content);
     if (count($paragraphs) > $paywall_paragraph) {
-        // Insérer la balise de paywall mise à jour
+        // Insert the updated paywall tag
         $paragraphs[$paywall_paragraph - 1] .= '<div id="steady_paywall" style="display: none;"></div>';
         $content = implode('</p>', $paragraphs);
     }
     
     return $content;
 }
+
+function add_steady_script_to_footer() {
+    ?>
+    <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+        var script = document.createElement('script');
+        script.src = "https://steadyhq.com/widget_loader/3f33a33b-e65b-47ea-b015-71c3de66f893";
+        script.type = 'text/javascript';
+        document.body.appendChild(script); // Add script to end of body
+    });
+    </script>
+    <?php
+}
+add_action('wp_footer', 'add_steady_script_to_footer');
+
 ?>
