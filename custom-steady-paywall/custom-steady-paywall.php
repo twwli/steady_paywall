@@ -51,7 +51,8 @@ function insert_paywall_tag_based_on_settings($content) {
 
     $paragraphs = explode('</p>', $content);
     if (count($paragraphs) > $paywall_paragraph) {
-        $paragraphs[$paywall_paragraph - 1] .= '___STEADY_PAYWALL___';
+        // Insérer la balise de paywall mise à jour
+        $paragraphs[$paywall_paragraph - 1] .= '<div id="steady_paywall" style="display: none;"></div>';
         $content = implode('</p>', $paragraphs);
     }
     
